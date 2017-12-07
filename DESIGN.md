@@ -27,7 +27,20 @@ button is a submit button that submits the form and redirects the page
 template, as well as having a link to the app creators' facebook page and a link back to the top of the page.
 
 Now, let's look at scripts.js, which is in the scripts folder of static within project.
-
+    The DOM function in scripts.js is a slightly modified version of the function from pset8, with a few aspects
+removed that aren't necessary for the map.
+    The configure function sets up the map with the necessary elements. It also calls update when the map is moved,
+and calls geocodeParameters and calculateMidpoint, which are the function used to add the markers to the map.
+    The getParameterByName function is from StackOverflow, and works by identifying the parameters from the url through
+the indicative characters, and choosing the value of the parameter matching the name input.
+    The geocodeAddress function takes in a geocoder, args array, index, and callback function. The function creates an
+address variable from the index of the args array. It then uses the geocoder to convert the address to a LatLng
+object, and pushes it to the global geocodes array. It then creates a marker with a flag icon at the address location.
+It then uses the lat and lng of the marker to update the global latcount and lngcount variables. The callback function
+makes sure that the function runs to completion.
+    The geocodeParameters function takes in a callback function as an argument. It takes the number of address
+parameters in the URL and creates a variable. It then runs a for loop for the number of addresses, gets each address
+using getParameterByName, and passes it to geocodeAddress, and then updates the global variable length.
 Next, let's take a look at application.py.
     After doing the necessary imports, there are two routes. These are for the two html templates that we have
 created, index.html and results.html. index.html is rendered as soon as the site is reached–– it acts as the
