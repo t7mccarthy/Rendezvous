@@ -37,10 +37,18 @@ the indicative characters, and choosing the value of the parameter matching the 
 address variable from the index of the args array. It then uses the geocoder to convert the address to a LatLng
 object, and pushes it to the global geocodes array. It then creates a marker with a flag icon at the address location.
 It then uses the lat and lng of the marker to update the global latcount and lngcount variables. The callback function
-makes sure that the function runs to completion.
+makes sure that the function runs to completion before moving on to the next step.
     The geocodeParameters function takes in a callback function as an argument. It takes the number of address
 parameters in the URL and creates a variable. It then runs a for loop for the number of addresses, gets each address
 using getParameterByName, and passes it to geocodeAddress, and then updates the global variable length.
+    The calculateMidpoint function starts by using the global variables latcount, lngcount, and length updated in
+geocodeParameters to calculate the geographic midpoint between all of the locations, and places a blue marker icon
+at that position. It then centers the map on the marker. Next, it gets the radius parameter from the URL,caps it at 30 miles,
+takes the absolute value, and converts it to meters from miles. It then creates a request object using the midpoint, radius,
+and the type parameter from the URL, and passes that request object into a textSearch. The callback function then iterates
+through up to 10 of the locations returned by the textSearch, adds a marker to those locations, and attaches a 'click' listener
+that opens an infoWindow containing the name of the business, a link to the website, the Google rating, and the address.
+
 Next, let's take a look at application.py.
     After doing the necessary imports, there are two routes. These are for the two html templates that we have
 created, index.html and results.html. index.html is rendered as soon as the site is reached–– it acts as the
@@ -48,3 +56,10 @@ landing page. results.html can only be reached through a GET request so that dat
 URL and thus the form.
 
 Finally, let's dissect results.html.
+    The head portion of the file is almost exactly the same as that of index.html, except that it also imports the
+app's own javascript found in the file scripts.js, and gets the Google Maps API and the geometry and places libraries.
+The API key is also set in this portion of the code, so that it does not have to be set by a user. At the top of the
+page, there is information letting a user know what is going on, and what to look for in the map. A map is embedded
+in the page to show the output, which is dealt with in scripts.js. A similar footer to the one created in index.html
+is at the bottom of this file, with the only difference being that there is a "back to home" button that takes a user
+back to the home page so they can get ready to rendezvous again!

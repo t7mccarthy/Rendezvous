@@ -1,11 +1,12 @@
 // Google Map
 let map;
 
-// Markers for map
-let markers = [];
+//geocoded addresses
 let geocodes = [];
+//sum of lat and lng
 let latcount = 0;
 let lngcount = 0;
+//number of address inputs
 let length = 0;
 
 // Info window
@@ -53,7 +54,7 @@ function calculateMidpoint()
     });
     marker.setMap(map);
     map.setCenter(output);
-    let radius = getParameterByName("radius");
+    let radius = Math.abs(getParameterByName("radius"));
     if (radius > 30)
     {
         radius = 30;
@@ -63,11 +64,10 @@ function calculateMidpoint()
     radius: radius * 1609,
     query: getParameterByName("type")
     };
-    console.log(request);
     service = new google.maps.places.PlacesService(map);
     service.textSearch(request, callback);
 
-    let placeArray = [];
+
     var infowindow = new google.maps.InfoWindow
     function callback(results, status) {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
@@ -77,12 +77,10 @@ function calculateMidpoint()
                 marker = new google.maps.Marker({
                     position: results[i].geometry.location,
                 });
-                markers.push(marker);
                 marker.setMap(map);
                 service.getDetails({
                         placeId: id}, function(place, status) {
                     if (status == google.maps.places.PlacesServiceStatus.OK) {
-                        // placeArray.push(place);
                         var marker = new google.maps.Marker({
                             map: map,
                             position: place.geometry.location
@@ -96,7 +94,6 @@ function calculateMidpoint()
                         });
                     }
                 });
-        //https://stackoverflow.com/questions/30012913/google-map-api-v3-add-multiple-infowindows
                 console.log(id);
                 if (i >= 10)
                 {
@@ -105,8 +102,6 @@ function calculateMidpoint()
             }
         }
     }
-//return output;
-
 }
 
 // Configure application
