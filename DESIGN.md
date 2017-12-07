@@ -42,12 +42,13 @@ makes sure that the function runs to completion before moving on to the next ste
 parameters in the URL and creates a variable. It then runs a for loop for the number of addresses, gets each address
 using getParameterByName, and passes it to geocodeAddress, and then updates the global variable length.
     The calculateMidpoint function starts by using the global variables latcount, lngcount, and length updated in
-geocodeParameters to calculate the geographic midpoint between all of the locations, and places a blue marker icon
-at that position. It then centers the map on the marker. Next, it gets the radius parameter from the URL,caps it at 30 miles,
-takes the absolute value, and converts it to meters from miles. It then creates a request object using the midpoint, radius,
-and the type parameter from the URL, and passes that request object into a textSearch. The callback function then iterates
-through up to 10 of the locations returned by the textSearch, adds a marker to those locations, and attaches a 'click' listener
-that opens an infoWindow containing the name of the business, a link to the website, the Google rating, and the address.
+geocodeParameters to calculate the geographic midpoint by averaging the lat and lng by dividing latcount and lngcount
+by length between all of the locations, and places a blue marker icon at that position. It then centers the map on the
+marker. Next, it gets the radius parameter from the URL,caps it at 30 miles, takes the absolute value, and converts it
+to meters from miles. It then creates a request object using the midpoint, radius, and the type parameter from the URL,
+and passes that request object into a textSearch. The callback function then iterates through up to 10 of the locations
+returned by the textSearch, adds a marker to those locations, and attaches a 'click' listener that opens an infoWindow
+containing the name of the business, a link to the website, the Google rating, and the address.
 
 Next, let's take a look at application.py.
     After doing the necessary imports, there are two routes. These are for the two html templates that we have

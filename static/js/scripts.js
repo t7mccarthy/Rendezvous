@@ -39,31 +39,34 @@ $(document).ready(function() {
     google.maps.event.addListenerOnce(map, "idle", configure);
 
 });
-
+//creates icon at midpoint and creates meeting point markers
 function calculateMidpoint()
 {
     latcount /= length;
     lngcount /= length;
-    console.log(latcount / length);
-    console.log(lngcount / length);
     let output = new google.maps.LatLng({lat: latcount, lng: lngcount});
     var image = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
+    //creates marker at midpoint
     marker = new google.maps.Marker({
         position: output,
         icon: image
     });
     marker.setMap(map);
     map.setCenter(output);
+
+    //get radius from url and convert into proper form
     let radius = Math.abs(getParameterByName("radius"));
     if (radius > 30)
     {
         radius = 30;
     }
+
     var request = {
     location: output,
     radius: radius * 1609,
     query: getParameterByName("type")
     };
+    //searches by type around central location
     service = new google.maps.places.PlacesService(map);
     service.textSearch(request, callback);
 
@@ -71,13 +74,16 @@ function calculateMidpoint()
     var infowindow = new google.maps.InfoWindow
     function callback(results, status) {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
+            //iterates through up to 10 results
             for (var i = 0; i < results.length; i++) {
                 var place = results[i];
                 id = results[i].place_id;
+                //places marker at results
                 marker = new google.maps.Marker({
                     position: results[i].geometry.location,
                 });
                 marker.setMap(map);
+                //creates infoWindow with place name, website, rating, and address
                 service.getDetails({
                         placeId: id}, function(place, status) {
                     if (status == google.maps.places.PlacesServiceStatus.OK) {
