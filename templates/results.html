@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>Rendezvous</title>
+    	<meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- documentation at http://getbootstrap.com/docs/4.0/, alternative themes at https://bootswatch.com/4-alpha/ -->
+
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <script src="https://cdn.rawgit.com/corejavascript/typeahead.js/master/dist/typeahead.jquery.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+
+        <!-- https://developers.google.com/maps/documentation/javascript/-->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUZK6XDjQT7VF1UwB32ENIyWeDhtw12q0&libraries=geometry,places&v=3.exp"></script>
+        <!-- http://handlebarsjs.com/ -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+
+        <!-- app's own JavaScript -->
+        <script src="static/js/scripts.js"></script>
+
+        <!-- JavaScript places library -->
+
+
+<!--
+Power Template
+http://www.templatemo.com/tm-508-power
+-->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/templatemo_misc.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/templatemo_style.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/owl-carousel.css') }}">
+
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
+
+
+        <section id="contact-us">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-heading">
+                            <h4>Rendezvous Results</h4>
+                            <p>Choose your perfect destination.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="map-canvas" style="width:100%;height:550px"></div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-12">
+                            <p>Copyright &copy; 2017 Studio30, LLC <br>
+                            <a href="http://www.templatemo.com/tm-508-power">Power Theme</a> by <a href="http://www.html5max.com" target="_parent">HTML5 Max</a></p>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+                        <ul class="social-icons">
+                            <li><a href="https://www.facebook.com/ThisIsStudio30">Connect with us on Facebook</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2 col-md-offset-2 col-sm-12">
+                        <div class="back-to-top">
+                            <form id="contact" action="/" method="get">
+                                <button type="submit" id="form-submit" >
+                                    <br><br>
+                                    <i class="fa fa-angle-up"></i>
+                                    back to home
+                                    <br><br><br><br>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
